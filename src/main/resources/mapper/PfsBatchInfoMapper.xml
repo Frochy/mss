@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allinfinance.mss.dal.mapper.PfsBatchInfoMapper">
+    <resultMap id="BaseResultMap" type="com.allinfinance.mss.dal.model.PfsBatchInfo">
+        <id column="BATCH_DATE" jdbcType="VARCHAR" property="batchDate"/>
+        <id column="BATCH_TYPE" jdbcType="VARCHAR" property="batchType"/>
+        <id column="BATCH_FILE_NAME" jdbcType="VARCHAR" property="batchFileName"/>
+        <result column="BATCH_STATUS" jdbcType="VARCHAR" property="batchStatus"/>
+        <result column="BATCH_FILE_PATH" jdbcType="VARCHAR" property="batchFilePath"/>
+        <result column="BATCH_DESC" jdbcType="VARCHAR" property="batchDesc"/>
+        <result column="ORG_ID" jdbcType="VARCHAR" property="orgId"/>
+        <result column="RESERVE_1" jdbcType="VARCHAR" property="reserve1"/>
+        <result column="RESERVE_2" jdbcType="VARCHAR" property="reserve2"/>
+        <result column="RESERVE_3" jdbcType="VARCHAR" property="reserve3"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        BATCH_DATE
+        ,
+        BATCH_TYPE,
+        BATCH_FILE_NAME,
+        BATCH_STATUS,
+        BATCH_FILE_PATH,
+        BATCH_DESC,
+        ORG_ID,
+        RESERVE_1,
+        RESERVE_2,
+        RESERVE_3
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="com.allinfinance.mss.dal.model.PfsBatchInfoKey"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from PFS_BATCH_INFO
+        where BATCH_DATE = #{batchDate,jdbcType=VARCHAR}
+        and BATCH_TYPE = #{batchType,jdbcType=VARCHAR}
+        and BATCH_FILE_NAME = #{batchFileName,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="com.allinfinance.mss.dal.model.PfsBatchInfoKey">
+        delete
+        from PFS_BATCH_INFO
+        where BATCH_DATE = #{batchDate,jdbcType=VARCHAR}
+          and BATCH_TYPE = #{batchType,jdbcType=VARCHAR}
+          and BATCH_FILE_NAME = #{batchFileName,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.allinfinance.mss.dal.model.PfsBatchInfo">
+        insert into PFS_BATCH_INFO (BATCH_DATE, BATCH_TYPE, BATCH_FILE_NAME,
+                                    BATCH_STATUS, BATCH_FILE_PATH, BATCH_DESC,
+                                    ORG_ID, RESERVE_1, RESERVE_2,
+                                    RESERVE_3)
+        values (#{batchDate,jdbcType=VARCHAR}, #{batchType,jdbcType=VARCHAR}, #{batchFileName,jdbcType=VARCHAR},
+                #{batchStatus,jdbcType=VARCHAR}, #{batchFilePath,jdbcType=VARCHAR}, #{batchDesc,jdbcType=VARCHAR},
+                #{orgId,jdbcType=VARCHAR}, #{reserve1,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR},
+                #{reserve3,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.allinfinance.mss.dal.model.PfsBatchInfo">
+        insert into PFS_BATCH_INFO
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="batchDate != null">
+                BATCH_DATE,
+            </if>
+            <if test="batchType != null">
+                BATCH_TYPE,
+            </if>
+            <if test="batchFileName != null">
+                BATCH_FILE_NAME,
+            </if>
+            <if test="batchStatus != null">
+                BATCH_STATUS,
+            </if>
+            <if test="batchFilePath != null">
+                BATCH_FILE_PATH,
+            </if>
+            <if test="batchDesc != null">
+                BATCH_DESC,
+            </if>
+            <if test="orgId != null">
+                ORG_ID,
+            </if>
+            <if test="reserve1 != null">
+                RESERVE_1,
+            </if>
+            <if test="reserve2 != null">
+                RESERVE_2,
+            </if>
+            <if test="reserve3 != null">
+                RESERVE_3,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="batchDate != null">
+                #{batchDate,jdbcType=VARCHAR},
+            </if>
+            <if test="batchType != null">
+                #{batchType,jdbcType=VARCHAR},
+            </if>
+            <if test="batchFileName != null">
+                #{batchFileName,jdbcType=VARCHAR},
+            </if>
+            <if test="batchStatus != null">
+                #{batchStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="batchFilePath != null">
+                #{batchFilePath,jdbcType=VARCHAR},
+            </if>
+            <if test="batchDesc != null">
+                #{batchDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="orgId != null">
+                #{orgId,jdbcType=VARCHAR},
+            </if>
+            <if test="reserve1 != null">
+                #{reserve1,jdbcType=VARCHAR},
+            </if>
+            <if test="reserve2 != null">
+                #{reserve2,jdbcType=VARCHAR},
+            </if>
+            <if test="reserve3 != null">
+                #{reserve3,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.allinfinance.mss.dal.model.PfsBatchInfo">
+        update PFS_BATCH_INFO
+        <set>
+            <if test="batchStatus != null">
+                BATCH_STATUS = #{batchStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="batchFilePath != null">
+                BATCH_FILE_PATH = #{batchFilePath,jdbcType=VARCHAR},
+            </if>
+            <if test="batchDesc != null">
+                BATCH_DESC = #{batchDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="orgId != null">
+                ORG_ID = #{orgId,jdbcType=VARCHAR},
+            </if>
+            <if test="reserve1 != null">
+                RESERVE_1 = #{reserve1,jdbcType=VARCHAR},
+            </if>
+            <if test="reserve2 != null">
+                RESERVE_2 = #{reserve2,jdbcType=VARCHAR},
+            </if>
+            <if test="reserve3 != null">
+                RESERVE_3 = #{reserve3,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where BATCH_DATE = #{batchDate,jdbcType=VARCHAR}
+        and BATCH_TYPE = #{batchType,jdbcType=VARCHAR}
+        and BATCH_FILE_NAME = #{batchFileName,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.allinfinance.mss.dal.model.PfsBatchInfo">
+        update PFS_BATCH_INFO
+        set BATCH_STATUS    = #{batchStatus,jdbcType=VARCHAR},
+            BATCH_FILE_PATH = #{batchFilePath,jdbcType=VARCHAR},
+            BATCH_DESC      = #{batchDesc,jdbcType=VARCHAR},
+            ORG_ID          = #{orgId,jdbcType=VARCHAR},
+            RESERVE_1       = #{reserve1,jdbcType=VARCHAR},
+            RESERVE_2       = #{reserve2,jdbcType=VARCHAR},
+            RESERVE_3       = #{reserve3,jdbcType=VARCHAR}
+        where BATCH_DATE = #{batchDate,jdbcType=VARCHAR}
+          and BATCH_TYPE = #{batchType,jdbcType=VARCHAR}
+          and BATCH_FILE_NAME = #{batchFileName,jdbcType=VARCHAR}
+    </update>
+    <resultMap id="BaseResultMap" type="com.allinfinance.mss.dal.model.PfsBatchInfo">
+        <id column="BATCH_DATE" jdbcType="VARCHAR" property="batchDate"/>
+        <id column="BATCH_TYPE" jdbcType="VARCHAR" property="batchType"/>
+        <id column="BATCH_FILE_NAME" jdbcType="VARCHAR" property="batchFileName"/>
+        <result column="BATCH_STATUS" jdbcType="VARCHAR" property="batchStatus"/>
+        <result column="BATCH_FILE_PATH" jdbcType="VARCHAR" property="batchFilePath"/>
+        <result column="BATCH_DESC" jdbcType="VARCHAR" property="batchDesc"/>
+        <result column="ORG_ID" jdbcType="VARCHAR" property="orgId"/>
+        <result column="RESERVE_1" jdbcType="VARCHAR" property="reserve1"/>
+        <result column="RESERVE_2" jdbcType="VARCHAR" property="reserve2"/>
+        <result column="RESERVE_3" jdbcType="VARCHAR" property="reserve3"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        BATCH_DATE
+        ,
+        BATCH_TYPE,
+        BATCH_FILE_NAME,
+        BATCH_STATUS,
+        BATCH_FILE_PATH,
+        BATCH_DESC,
+        ORG_ID,
+        RESERVE_1,
+        RESERVE_2,
+        RESERVE_3
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="com.allinfinance.mss.dal.model.PfsBatchInfoKey"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from PFS_BATCH_INFO
+        where BATCH_DATE = #{batchDate,jdbcType=VARCHAR}
+        and BATCH_TYPE = #{batchType,jdbcType=VARCHAR}
+        and BATCH_FILE_NAME = #{batchFileName,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="com.allinfinance.mss.dal.model.PfsBatchInfoKey">
+        delete
+        from PFS_BATCH_INFO
+        where BATCH_DATE = #{batchDate,jdbcType=VARCHAR}
+          and BATCH_TYPE = #{batchType,jdbcType=VARCHAR}
+          and BATCH_FILE_NAME = #{batchFileName,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.allinfinance.mss.dal.model.PfsBatchInfo">
+        insert into PFS_BATCH_INFO (BATCH_DATE, BATCH_TYPE, BATCH_FILE_NAME,
+                                    BATCH_STATUS, BATCH_FILE_PATH, BATCH_DESC,
+                                    ORG_ID, RESERVE_1, RESERVE_2,
+                                    RESERVE_3)
+        values (#{batchDate,jdbcType=VARCHAR}, #{batchType,jdbcType=VARCHAR}, #{batchFileName,jdbcType=VARCHAR},
+                #{batchStatus,jdbcType=VARCHAR}, #{batchFilePath,jdbcType=VARCHAR}, #{batchDesc,jdbcType=VARCHAR},
+                #{orgId,jdbcType=VARCHAR}, #{reserve1,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR},
+                #{reserve3,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.allinfinance.mss.dal.model.PfsBatchInfo">
+        insert into PFS_BATCH_INFO
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="batchDate != null">
+                BATCH_DATE,
+            </if>
+            <if test="batchType != null">
+                BATCH_TYPE,
+            </if>
+            <if test="batchFileName != null">
+                BATCH_FILE_NAME,
+            </if>
+            <if test="batchStatus != null">
+                BATCH_STATUS,
+            </if>
+            <if test="batchFilePath != null">
+                BATCH_FILE_PATH,
+            </if>
+            <if test="batchDesc != null">
+                BATCH_DESC,
+            </if>
+            <if test="orgId != null">
+                ORG_ID,
+            </if>
+            <if test="reserve1 != null">
+                RESERVE_1,
+            </if>
+            <if test="reserve2 != null">
+                RESERVE_2,
+            </if>
+            <if test="reserve3 != null">
+                RESERVE_3,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="batchDate != null">
+                #{batchDate,jdbcType=VARCHAR},
+            </if>
+            <if test="batchType != null">
+                #{batchType,jdbcType=VARCHAR},
+            </if>
+            <if test="batchFileName != null">
+                #{batchFileName,jdbcType=VARCHAR},
+            </if>
+            <if test="batchStatus != null">
+                #{batchStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="batchFilePath != null">
+                #{batchFilePath,jdbcType=VARCHAR},
+            </if>
+            <if test="batchDesc != null">
+                #{batchDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="orgId != null">
+                #{orgId,jdbcType=VARCHAR},
+            </if>
+            <if test="reserve1 != null">
+                #{reserve1,jdbcType=VARCHAR},
+            </if>
+            <if test="reserve2 != null">
+                #{reserve2,jdbcType=VARCHAR},
+            </if>
+            <if test="reserve3 != null">
+                #{reserve3,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.allinfinance.mss.dal.model.PfsBatchInfo">
+        update PFS_BATCH_INFO
+        <set>
+            <if test="batchStatus != null">
+                BATCH_STATUS = #{batchStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="batchFilePath != null">
+                BATCH_FILE_PATH = #{batchFilePath,jdbcType=VARCHAR},
+            </if>
+            <if test="batchDesc != null">
+                BATCH_DESC = #{batchDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="orgId != null">
+                ORG_ID = #{orgId,jdbcType=VARCHAR},
+            </if>
+            <if test="reserve1 != null">
+                RESERVE_1 = #{reserve1,jdbcType=VARCHAR},
+            </if>
+            <if test="reserve2 != null">
+                RESERVE_2 = #{reserve2,jdbcType=VARCHAR},
+            </if>
+            <if test="reserve3 != null">
+                RESERVE_3 = #{reserve3,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where BATCH_DATE = #{batchDate,jdbcType=VARCHAR}
+        and BATCH_TYPE = #{batchType,jdbcType=VARCHAR}
+        and BATCH_FILE_NAME = #{batchFileName,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.allinfinance.mss.dal.model.PfsBatchInfo">
+        update PFS_BATCH_INFO
+        set BATCH_STATUS    = #{batchStatus,jdbcType=VARCHAR},
+            BATCH_FILE_PATH = #{batchFilePath,jdbcType=VARCHAR},
+            BATCH_DESC      = #{batchDesc,jdbcType=VARCHAR},
+            ORG_ID          = #{orgId,jdbcType=VARCHAR},
+            RESERVE_1       = #{reserve1,jdbcType=VARCHAR},
+            RESERVE_2       = #{reserve2,jdbcType=VARCHAR},
+            RESERVE_3       = #{reserve3,jdbcType=VARCHAR}
+        where BATCH_DATE = #{batchDate,jdbcType=VARCHAR}
+          and BATCH_TYPE = #{batchType,jdbcType=VARCHAR}
+          and BATCH_FILE_NAME = #{batchFileName,jdbcType=VARCHAR}
+    </update>
+</mapper>

@@ -1,0 +1,19 @@
+mss:
+  socket:
+    server:
+      port: 6666
+      timeout: 60
+      processorCount: 20
+      bufferSize: 8192
+      msgLengthSize: 6
+      encode: utf-8
+      orgIds: '000005755202'
+      serviceIds: 16060
+
+logging:
+  file: /home/mss/logs/mss-aifp.log
+  file.max-size: 100MB
+  level:
+    com.allinfinance.mss: info
+  pattern:
+    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${PID} - [%t] %logger{0}.%M-%line : %m%n'
